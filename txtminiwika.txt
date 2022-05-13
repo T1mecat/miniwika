@@ -10,6 +10,10 @@
 		Online = onlinebaro
 	Ночная волна = night
 	Арбитраж(Online) = arb
+	Деймос(Online) = cambioncycle
+	Цетус(Online) = cetusCycle
+	Земля(Online) = earthCycle
+	Фортнуа(Online) = vallisCycle
 Варфреймы
 	Атлас
 		Чертёж = [Атлас]: Квест:[Протокол Джордаса], после прохождения можно купить ещё один чертеж у Симэриса.
