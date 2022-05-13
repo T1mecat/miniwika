@@ -77,11 +77,13 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 				SoundPlay, *64
 				barotimeonline = 
 				baroplaceonline =
+				return
 			}
 			else
 				if Command = night
 					{
 						Clipboard = Ночная волна заканчивается %nightenddate%, через %diff% неделю/недель
+						return
 					}
 					else
 						if Command = arb
@@ -111,12 +113,119 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 								if diffarb = 0
 									{
 										Clipboard = Актуальный арбитраж: %enemy%, %typearb%, %miss%.
+										return
 									}
 									else
 										Clipboard = Ждём обновления API, данные за прошлый час: %enemy%, %typearb%, %miss%.
+										return
 							}
 							else
-    							Clipboard = %Command%
+								if Command = cambioncycle
+									{
+										oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
+										oHTTP.Open("Get", "https://api.warframestat.us/pc/ru/cambionCycle" , False)						  
+										oHTTP.SetRequestHeader("Content-Type", "application/json")	
+										oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+										oHTTP.Send()							    
+										response := oHTTP.ResponseText
+										oHTTP := ""
+										jsnew := response
+										jspars := JsonToAHK(jsnew)
+										active := % jspars.active
+										timeLeft := % jspars.timeLeft
+										SoundPlay, *64
+										if active = fass
+											{
+												active = Фэз
+												Clipboard = На Деймосе сейчас %active% и пробудет он там %timeLeft%. Воум приезжает на 50 минут, Фэз на 100.
+												return
+											}
+											else
+												active = Воум
+												Clipboard = На Деймосе сейчас %active% и пробудет он там %timeLeft%. Воум приезжает на 50 минут, Фэз на 100.
+												return
+									}
+									else
+										If Command = cetusCycle
+											{
+												oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
+												oHTTP.Open("Get", "https://api.warframestat.us/pc/cetusCycle" , False)						  
+												oHTTP.SetRequestHeader("Content-Type", "application/json")	
+												oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+												oHTTP.Send()							    
+												response := oHTTP.ResponseText
+												oHTTP := ""
+												jsnew := response
+												jspars := JsonToAHK(jsnew)
+												active := % jspars.state
+												timeLeft := % jspars.timeLeft
+												SoundPlay, *64
+													if active = night
+														{
+															active = ночь
+															Clipboard = На Цетусе сейчас %active% и продлится она %timeLeft%. День идёт 100 минут, ночь - 50. 
+															return
+														}
+														else
+															active = День
+															Clipboard = На Цетусе сейчас %active% и продлится он %timeLeft%. День идёт 100 минут, ночь - 50. 
+															return
+												}
+												else
+													If Command = earthCycle
+														{
+															oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
+															oHTTP.Open("Get", "https://api.warframestat.us/pc/earthCycle" , False)						  
+															oHTTP.SetRequestHeader("Content-Type", "application/json")	
+															oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+															oHTTP.Send()							    
+															response := oHTTP.ResponseText
+															oHTTP := ""
+															jsnew := response
+															jspars := JsonToAHK(jsnew)
+															active := % jspars.state
+															timeLeft := % jspars.timeLeft
+															SoundPlay, *64
+																if active = night
+																	{
+																		active = ночь
+																		Clipboard = На МИССИЯХ земли сейчас %active% и продлится она %timeLeft%. Время суток изменяется каждые 4 часа. 
+																		return
+																	}
+																	else
+																		active = День
+																		Clipboard = На МИССИЯХ земли сейчас %active% и продлится он %timeLeft%. Время суток изменяется каждые 4 часа.
+																		return	
+														}
+														else
+															if Command = vallisCycle
+																{
+																	oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
+																	oHTTP.Open("Get", "https://api.warframestat.us/pc/vallisCycle" , False)						  
+																	oHTTP.SetRequestHeader("Content-Type", "application/json")	
+																	oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+																	oHTTP.Send()							    
+																	response := oHTTP.ResponseText
+																	oHTTP := ""
+																	jsnew := response
+																	jspars := JsonToAHK(jsnew)
+																	active := % jspars.state
+																	timeLeft := % jspars.timeLeft
+																	SoundPlay, *64
+																		if active = cold
+																			{
+																				active = Холодно
+																				Clipboard = В Долине Сфер сейчас %active% и потеплеет через %timeLeft%. Тепло 6 минут 40 секунд, Холодно 20 минут.
+																				return
+																			}
+																			else
+																				active = Тепло
+																				Clipboard = В Долине Сфер сейчас %active% и похолодает через %timeLeft%. Тепло 6 минут 40 секунд, Холодно 20 минут.
+																				return		
+																}
+																else												
+    																Clipboard = %Command%
+																	return
 }
 
 class textMenu
