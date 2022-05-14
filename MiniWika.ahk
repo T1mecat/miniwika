@@ -1,11 +1,18 @@
-﻿FileCreateDir, C:\Users\%UserName%\Documents\timecat\miniwika
+﻿yep = 0
+AutoTrim, Off
+FileCreateDir, C:\Users\%UserName%\Documents\timecat\miniwika
 FileInstall, config.ini, C:\Users\%UserName%\Documents\timecat\miniwika\config.ini, 0
-FileInstall, config.ini, C:\Users\%UserName%\Documents\timecat\miniwika\txtminiwika.txt, 0
+FileInstall, txtminiwika.txt, C:\Users\%UserName%\Documents\timecat\miniwika\txtminiwika.txt, 0
+FileInstall, custommenu.txt, C:\Users\%UserName%\Documents\timecat\miniwika\custommenu.txt, 0
 SetWorkingDir, C:\Users\%UserName%\Documents\timecat\miniwika
 iniread, VChec, %A_WorkingDir%\config.ini, one, VChec
 if VChec = 1
 {
 	UrlDownloadToFile, https://raw.githubusercontent.com/T1mecat/miniwika/main/txtminiwika.txt, %A_WorkingDir%\txtminiwika.txt 
+	FileRead, menuvar, %A_WorkingDir%\txtminiwika.txt 
+	FileRead, custommenu, %A_WorkingDir%\custommenu.txt
+	StringReplace, custommenu, custommenu, %A_SPACE%%A_SPACE%%A_SPACE%%A_SPACE%, %A_Tab%, All
+	FileAppend, %custommenu%, %A_WorkingDir%\txtminiwika.txt 
 }
 	else
 	{
@@ -45,10 +52,12 @@ diff := StrReplace(diff, "-")
 
 SoundPlay, *64
 return
-
+F2::
+yep = 1
 F1::menu2.show()
 OnMenuSelect(Command, ItemName, ItemPos, MenuName) 
 {
+	global yep
 	global barotime
 	global baroday
 	global baroplace
@@ -219,12 +228,23 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 																				return
 																			}
 																			else
-																				active = Тепло
+																				active = Тепло																			
 																				Clipboard = В Долине Сфер сейчас %active% и похолодает через %timeLeft%. Тепло 6 минут 40 секунд, Холодно 20 минут.
+																				
 																				return		
 																}
-																else												
-    																Clipboard = %Command%
+																else
+																	if yep = 1
+																	{
+																		yep = 0
+																		Clipboard = %Command%
+																		WinActivate, Warframe
+																		Sleep, 100
+																		Send {Ctrl Down}v{Ctrl Up}																																	
+																	}	
+																	else											
+    																	Clipboard = %Command%
+																	
 																	return
 }
 
