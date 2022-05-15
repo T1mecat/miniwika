@@ -23,7 +23,8 @@ menu2 := new textMenu(menuvar, "OnMenuSelect")
 oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 oHTTP.Open("Get", "https://api.warframestat.us/pc/ru/voidTrader" , False)						  
 oHTTP.SetRequestHeader("Content-Type", "application/json")	
-oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")
+oHTTP.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")		
 oHTTP.Send()							    
 response := oHTTP.ResponseText
 oHTTP := ""
@@ -36,7 +37,8 @@ RegExMatch(barotime, "\d+", baroday)
 oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 oHTTP.Open("Get", "https://api.warframestat.us/pc/nightwave" , False)						  
 oHTTP.SetRequestHeader("Content-Type", "application/json")	
-oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")
+oHTTP.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")		
 oHTTP.Send()							    
 response := oHTTP.ResponseText
 oHTTP := ""
@@ -74,7 +76,8 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 				oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 				oHTTP.Open("Get", "https://api.warframestat.us/pc/ru/voidTrader" , False)						  
 				oHTTP.SetRequestHeader("Content-Type", "application/json")	
-				oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+				oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")
+				oHTTP.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")		
 				oHTTP.Send()							    
 				response := oHTTP.ResponseText
 				oHTTP := ""
@@ -101,7 +104,8 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 								oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 								oHTTP.Open("Get", "https://api.warframestat.us/pc/ru/arbitration" , False)						  
 								oHTTP.SetRequestHeader("Content-Type", "application/json")	
-								oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+								oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")
+								oHTTP.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")		
 								oHTTP.Send()							    
 								response := oHTTP.ResponseText
 								oHTTP := ""
@@ -134,7 +138,8 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 										oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 										oHTTP.Open("Get", "https://api.warframestat.us/pc/ru/cambionCycle" , False)						  
 										oHTTP.SetRequestHeader("Content-Type", "application/json")	
-										oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+										oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")
+										oHTTP.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")		
 										oHTTP.Send()							    
 										response := oHTTP.ResponseText
 										oHTTP := ""
@@ -160,7 +165,8 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 												oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 												oHTTP.Open("Get", "https://api.warframestat.us/pc/cetusCycle" , False)						  
 												oHTTP.SetRequestHeader("Content-Type", "application/json")	
-												oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+												oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")
+												oHTTP.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")		
 												oHTTP.Send()							    
 												response := oHTTP.ResponseText
 												oHTTP := ""
@@ -186,7 +192,8 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 															oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 															oHTTP.Open("Get", "https://api.warframestat.us/pc/earthCycle" , False)						  
 															oHTTP.SetRequestHeader("Content-Type", "application/json")	
-															oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+															oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")
+															oHTTP.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")		
 															oHTTP.Send()							    
 															response := oHTTP.ResponseText
 															oHTTP := ""
@@ -212,7 +219,8 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 																	oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 																	oHTTP.Open("Get", "https://api.warframestat.us/pc/vallisCycle" , False)						  
 																	oHTTP.SetRequestHeader("Content-Type", "application/json")	
-																	oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")	
+																	oHTTP.SetRequestHeader("X-Access-Key" , "SOMEKEYHERE")
+																	oHTTP.SetRequestHeader("User-Agent", "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)")		
 																	oHTTP.Send()							    
 																	response := oHTTP.ResponseText
 																	oHTTP := ""
