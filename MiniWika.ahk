@@ -93,7 +93,9 @@ SoundPlay, *64
 return
 F2::
 yep = 1
-F1::menu2.show()
+F1::
+PostMessage 0x50, 0, DllCall("LoadKeyboardLayout", "Str", "00000419", "Int", 1), , A ; WM_INPUTLANGCHANGEREQUEST
+menu2.show()
 OnMenuSelect(Command, ItemName, ItemPos, MenuName) 
 {
 	global yep
