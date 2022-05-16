@@ -25,7 +25,7 @@ if VOkn = 0
 		Gui, Add, Text, x12 y289 w320 h40 , После подтверждения кликом мышки или Enter`, информация окажется в твоём буфере обмена и будет доступна комбинацией Ctrl + V
 		Gui, Add, Button, x42 y389 w250 h30 , Поехали
 		Gui, Add, Text, x12 y329 w310 h40 , При запуске и выборе пунктов (Online) дожидайтесь звука программы`, это знаменует об успешной загрузке данных с сервера.
-		Gui, Show, x320 y216 h445 w339, New GUI Window
+		Gui, Show, x320 y216 h445 w339, MiniWika
 		Return
 		GuiClose:
 		ExitApp
