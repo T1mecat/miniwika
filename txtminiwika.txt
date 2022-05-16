@@ -14,7 +14,7 @@
 	Деймос(Online) = cambioncycle
 	Цетус(Online) = cetusCycle
 	Земля(Online) = earthCycle
-	Фортнуа(Online) = vallisCycle
+	Фортуна(Online) = vallisCycle
 Варфреймы
 	Атлас
 		Чертеж = [Атлас]: Квест:[Протокол Джордаса] , после прохождения можно купить еще один чертеж у Симэриса.
