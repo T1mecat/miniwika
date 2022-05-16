@@ -6,18 +6,51 @@ FileInstall, txtminiwika.txt, C:\Users\%UserName%\Documents\timecat\miniwika\txt
 FileInstall, custommenu.txt, C:\Users\%UserName%\Documents\timecat\miniwika\custommenu.txt, 0
 SetWorkingDir, C:\Users\%UserName%\Documents\timecat\miniwika
 iniread, VChec, %A_WorkingDir%\config.ini, one, VChec
-if VChec = 1
-{
-	UrlDownloadToFile, https://raw.githubusercontent.com/T1mecat/miniwika/main/txtminiwika.txt, %A_WorkingDir%\txtminiwika.txt 
-	FileRead, menuvar, %A_WorkingDir%\txtminiwika.txt 
-	FileRead, custommenu, %A_WorkingDir%\custommenu.txt
-	StringReplace, custommenu, custommenu, %A_SPACE%%A_SPACE%%A_SPACE%%A_SPACE%, %A_Tab%, All
-	FileAppend, %custommenu%, %A_WorkingDir%\txtminiwika.txt 
-}
-	else
+iniread, VOkn, %A_WorkingDir%\config.ini, one, VOkn
+if VOkn = 0
 	{
-
+		Gui, Add, Text, x77 y19 w180 h20 , Добро пожаловать в МиниВику <3
+		Gui, Add, Text, x12 y39 w310 h30 +Left, Перед запуском ты можешь выбрать`, скачивать ли файл с базой данных или использовать свой.
+		Gui, Add, CheckBox, x12 y69 w310 h20 VChec , Всегда скачивать актуальную базу(200кб).
+		Gui, Add, CheckBox, x12 y89 w310 h20 VOkn , Больше не показывать при запуске
+		Gui, Add, Text, x12 y119 w310 h20 , Изменить настройки мжно в файле по пути:
+		Gui, Add, Text, x12 y139 w310 h20 , C:\Users\`%UserName`%\Documents\timecat\miniwika
+		Gui, Add, Text, x132 y169 w70 h20 , Управление
+		Gui, Add, Text, x12 y209 w250 h20 , F1 - для вызова меню.
+		Gui, Add, Text, x12 y229 w320 h20 , F2 - для вызова меню и автоматической вставки в Warframe
+		Gui, Add, Text, x12 y249 w320 h20 , Стрелочки - для выбора пункта меню
+		Gui, Add, Text, x12 y269 w320 h20 , Enter - для подтверждения выбора
+		Gui, Add, Text, x12 y289 w320 h40 , После подтверждения кликом мышки или Enter`, информация окажется в твоём буфере обмена и будет доступна комбинацией Ctrl + V
+		Gui, Add, Button, x42 y389 w250 h30 , Поехали
+		Gui, Add, Text, x12 y329 w310 h40 , При запуске и выборе пунктов (Online) дожидайтесь звука программы`, это знаменует об успешной загрузке данных с сервера.
+		Gui, Show, x320 y216 h445 w339, New GUI Window
+		Return
+		GuiClose:
+		ExitApp
+		ButtonПоехали:
+		Gui, Submit
+		IniWrite, %Chec%, %A_WorkingDir%\config.ini, one, VChec
+		IniWrite, %Okn%, %A_WorkingDir%\config.ini, one, VOkn
+		iniread, VChec, %A_WorkingDir%\config.ini, one, VChec
+		iniread, VOkn, %A_WorkingDir%\config.ini, one, VOkn
+		gosub, al
+		return
 	}
+	else
+		{
+		}
+al:
+if VChec = 1
+	{
+		UrlDownloadToFile, https://raw.githubusercontent.com/T1mecat/miniwika/main/txtminiwika.txt, %A_WorkingDir%\txtminiwika.txt 
+		FileRead, menuvar, %A_WorkingDir%\txtminiwika.txt 
+		FileRead, custommenu, %A_WorkingDir%\custommenu.txt
+		StringReplace, custommenu, custommenu, %A_SPACE%%A_SPACE%%A_SPACE%%A_SPACE%, %A_Tab%, All
+		FileAppend, %custommenu%, %A_WorkingDir%\txtminiwika.txt 
+	}
+	else
+		{
+		}
 FileRead, menuvar, %A_WorkingDir%\txtminiwika.txt 
 menu2 := new textMenu(menuvar, "OnMenuSelect")
 oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
@@ -258,6 +291,7 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 																	return
 }
 
+
 class textMenu
 {
 	__New(ByRef VariableOrFileName, FunctionName := "") {
@@ -376,3 +410,4 @@ JsonToAHK(json, rec := false) {
    Return obj 
 } 
 return 
+
