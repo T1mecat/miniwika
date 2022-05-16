@@ -1,5 +1,7 @@
 ﻿yep = 0
 AutoTrim, Off
+#SingleInstance force
+#MaxThreads 2
 FileCreateDir, C:\Users\%UserName%\Documents\timecat\miniwika
 FileInstall, config.ini, C:\Users\%UserName%\Documents\timecat\miniwika\config.ini, 0
 FileInstall, txtminiwika.txt, C:\Users\%UserName%\Documents\timecat\miniwika\txtminiwika.txt, 0
@@ -53,6 +55,7 @@ if VChec = 1
 		}
 FileRead, menuvar, %A_WorkingDir%\txtminiwika.txt 
 menu2 := new textMenu(menuvar, "OnMenuSelect")
+Clipboard =
 oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 oHTTP.Open("Get", "https://api.warframestat.us/pc/ru/voidTrader" , False)						  
 oHTTP.SetRequestHeader("Content-Type", "application/json")	
@@ -67,6 +70,7 @@ barotime = % jspars.startString
 baroplace = % jspars.location
 RegExMatch(barotime, "\d+", baroday)
 
+Clipboard =
 oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 oHTTP.Open("Get", "https://api.warframestat.us/pc/nightwave" , False)						  
 oHTTP.SetRequestHeader("Content-Type", "application/json")	
@@ -106,6 +110,7 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 	else
 		if Command = onlinebaro
 			{
+				Clipboard =
 				oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 				oHTTP.Open("Get", "https://api.warframestat.us/pc/ru/voidTrader" , False)						  
 				oHTTP.SetRequestHeader("Content-Type", "application/json")	
@@ -134,6 +139,7 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 						if Command = arb
 							{
 								diffarb := 
+								Clipboard =
 								oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 								oHTTP.Open("Get", "https://api.warframestat.us/pc/ru/arbitration" , False)						  
 								oHTTP.SetRequestHeader("Content-Type", "application/json")	
@@ -168,6 +174,8 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 							else
 								if Command = cambioncycle
 									{
+										
+										Clipboard =
 										oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 										oHTTP.Open("Get", "https://api.warframestat.us/pc/ru/cambionCycle" , False)						  
 										oHTTP.SetRequestHeader("Content-Type", "application/json")	
@@ -195,6 +203,7 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 									else
 										If Command = cetusCycle
 											{
+												Clipboard =
 												oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 												oHTTP.Open("Get", "https://api.warframestat.us/pc/cetusCycle" , False)						  
 												oHTTP.SetRequestHeader("Content-Type", "application/json")	
@@ -222,6 +231,7 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 												else
 													If Command = earthCycle
 														{
+															Clipboard =
 															oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 															oHTTP.Open("Get", "https://api.warframestat.us/pc/earthCycle" , False)						  
 															oHTTP.SetRequestHeader("Content-Type", "application/json")	
@@ -249,6 +259,7 @@ OnMenuSelect(Command, ItemName, ItemPos, MenuName)
 														else
 															if Command = vallisCycle
 																{
+																	Clipboard =
 																	oHTTP:=ComObjCreate("WinHttp.WinHttpRequest.5.1")
 																	oHTTP.Open("Get", "https://api.warframestat.us/pc/vallisCycle" , False)						  
 																	oHTTP.SetRequestHeader("Content-Type", "application/json")	
