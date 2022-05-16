@@ -94,12 +94,9 @@ return
 F2::
 yep = 1
 F1::
+PostMessage 0x50, 0, DllCall("LoadKeyboardLayout", "Str", "00000419", "Int", 1), , A ; WM_INPUTLANGCHANGEREQUEST
 ;да простят меня боги, оно не хочет работать просто так
-PostMessage 0x50, 0, DllCall("LoadKeyboardLayout", "Str", "00000419", "Int", 1), , A ; WM_INPUTLANGCHANGEREQUEST
-PostMessage 0x50, 0, DllCall("LoadKeyboardLayout", "Str", "00000419", "Int", 1), , A ; WM_INPUTLANGCHANGEREQUEST
-PostMessage 0x50, 0, DllCall("LoadKeyboardLayout", "Str", "00000419", "Int", 1), , A ; WM_INPUTLANGCHANGEREQUEST
-PostMessage 0x50, 0, DllCall("LoadKeyboardLayout", "Str", "00000419", "Int", 1), , A ; WM_INPUTLANGCHANGEREQUEST
-PostMessage 0x50, 0, DllCall("LoadKeyboardLayout", "Str", "00000419", "Int", 1), , A ; WM_INPUTLANGCHANGEREQUEST
+Sleep, 1
 menu2.show()
 OnMenuSelect(Command, ItemName, ItemPos, MenuName) 
 {
