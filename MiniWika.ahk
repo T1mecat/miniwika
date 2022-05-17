@@ -425,4 +425,4 @@ JsonToAHK(json, rec := false) {
    Return obj 
 } 
 return 
-
+F12::ExitApp
