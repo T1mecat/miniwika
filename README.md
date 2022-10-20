@@ -14,6 +14,8 @@
 
 А так же, вытягивает из Warframe API, значит, вы можете получить информацию о Баро Ки'Тиире или времени в Цетусе нажав всего одну кнопку.
 
+Поблагодарить и проспонсировать улучшение проекта: https://www.donationalerts.com/r/time_cat или https://donate.qiwi.com/payin/Timecat
+
 # ЗАГРУЗКА
 
 https://github.com/T1mecat/miniwika/releases
